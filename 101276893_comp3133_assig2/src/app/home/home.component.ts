@@ -4,21 +4,7 @@ import { Apollo, gql } from 'apollo-angular';
 import { map, Observable,Subscription } from 'rxjs';
 
 
-const GET_LISTINGS = gql`
-query{
-  viewListings {
-    listing_id
-    listing_title
-    description
-    street
-    city
-    postal_code
-    price
-    email
-    username
-  }
-}
-`;
+
 
 const GET_LISTINGS_ByNAME = gql`
 query ($listingTitle: String){
@@ -52,6 +38,22 @@ query($city: String!){
 }
 `;
 
+const GET_LISTINGS = gql`
+query{
+  viewListings {
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+  }
+}
+`;
+
 const GET_LISTINGS_ByPOSTALCODE = gql`
 query($postalCode: String){
   getListingsByPostalcode(postal_code: $postalCode) {
@@ -68,7 +70,7 @@ query($postalCode: String){
 
 `;
 
-const ADD_BOOKING_BY_USR = gql`
+const ADD_BOOKING = gql`
 mutation($listingId: String, $bookingId: String!, $bookingDate: String!, $bookingStart: String!, $bookingEnd: String!, $username: String!){
   addBooking(listing_id: $listingId, booking_id: $bookingId, booking_date: $bookingDate, booking_start: $bookingStart, booking_end: $bookingEnd, username: $username) {
     listing_id
@@ -104,7 +106,7 @@ export class HomeComponent implements OnInit {
   listingItemId: String | undefined;
 
   private querySubscription!: Subscription;
-  private mutationSub!: Subscription;
+
 
   constructor(private apollo: Apollo) { }
 
@@ -130,7 +132,6 @@ getlisting(viewListings: any[]) {
 }
 
 searchByName(){
-  console.log("Search by name")
   console.log(this.SearchByNameControl.value)
 
   this.querySubscription = this.apollo.watchQuery<any>({
@@ -153,7 +154,6 @@ searchByName(){
 
 searchByCity(){
   this.listings=[];
-  console.log("Search by City")
   console.log(this.SearchByCityControl.value)
   this.querySubscription = this.apollo.watchQuery<any>({
     query: GET_LISTINGS_ByCITY,
@@ -173,7 +173,6 @@ searchByCity(){
 }
 
 searchByPostalCode(){
-  console.log("Search by Postal Code")
   console.log(this.SearchByPostalCodeControl.value)
   this.querySubscription = this.apollo.watchQuery<any>({
     query: GET_LISTINGS_ByPOSTALCODE,
@@ -196,8 +195,6 @@ addBooking(desc: string){
   let token = localStorage.getItem("token");
   let user = token? JSON.parse(atob(token.split('.')[1])).username : ""
   let type = token? JSON.parse(atob(token.split('.')[1])).type : ""
-  console.log("Book btn clicked")
-  console.log(desc)
 
 
   var today = new Date();
@@ -206,17 +203,9 @@ addBooking(desc: string){
   var yyyy = today.getFullYear();
 
   let currentdate = dd + '-' + mm + '-' + yyyy;
-
-  console.log(this.listingItemId)
-  console.log(this.BookingId.value)
-  console.log(currentdate)
-  console.log(this.BookingStartDate.value)
-  console.log(this.BookingEndDate.value)
-  console.log(user);
-  console.log(type);
   this.bookedNotClicked = !this.bookedNotClicked
  this.apollo.mutate({
-    mutation: ADD_BOOKING_BY_USR,
+    mutation: ADD_BOOKING,
     variables: {
       listing_id:this.listingItemId,
       bookingId:this.BookingId.value,

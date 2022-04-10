@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-
-
-
 import { BehaviorSubject } from "rxjs";
 import { Apollo, gql } from 'apollo-angular';
 import { map, Observable,Subscription } from 'rxjs';
@@ -24,7 +21,7 @@ const LOGIN = gql`
   providedIn: 'root'
 })
 export class AuthService {
- // isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   isAuthenticated = new BehaviorSubject<boolean>(false);
   constructor(private apollo: Apollo,private _router: Router) {
     if (localStorage.getItem("token")) this.isAuthenticated.next(true);
@@ -43,9 +40,6 @@ export class AuthService {
         ({ data }) => {
           localStorage.setItem("token", data.login.token);
           localStorage.setItem("type", data.login.type);
-         // this.isAuthenticated.next(true);
-         // localStorage.setItem("auth", JSON.stringify(this.isAuthenticated.value));
-        
           this._router.navigateByUrl('/')
           console.log( data.login.token)
           console.log( data.login.firstname)

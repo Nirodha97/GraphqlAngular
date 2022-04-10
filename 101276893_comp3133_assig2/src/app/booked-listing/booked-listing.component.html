@@ -2,12 +2,6 @@
     <h1>Booked Listings</h1>
     
     <div>
-      <!-- <mat-selection-list [multiple]="false">
-        <mat-list-option *ngFor="let listing of listings" class="listItem">
-          {{ listing.listing_title }}
-          {{ listing.city }}
-        </mat-list-option>
-      </mat-selection-list> -->
     </div>
     <div *ngIf="listings; else showMessage">
     </div>
@@ -24,8 +18,8 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <ng-template #showMessage>
-      <h2>Please Log in to an account to view booking</h2>
+    <ng-template #showMessage style="text-align: center;">
+      <!-- <p style="color: aliceblue; font-size: 30px;">Please Log in as Customer</p> -->
     </ng-template>
     </div>
     

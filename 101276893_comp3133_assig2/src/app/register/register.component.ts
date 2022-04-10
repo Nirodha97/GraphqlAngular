@@ -73,28 +73,28 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getErrorMessage_Username() {
+  getErrorMessage_1() {
     if (this.UserNameControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_Firstname(){
+  getErrorMessage_2(){
     if (this.FirstNameControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_Lastname(){
+  getErrorMessage_3(){
     if (this.LastNameControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_Email(){
+  getErrorMessage_4(){
     if (this.EmailControl.hasError('required')) {
       return 'You must enter a value';
     }
@@ -105,14 +105,14 @@ export class RegisterComponent implements OnInit {
     return null;
   }
 
-  getErrorMessage_Password(){
+  getErrorMessage_5(){
     if (this.PasswordControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_ConformPassword(){
+  getErrorMessage_6(){
     if (this.ConformPasswordControl.hasError('required')) {
       return 'You must enter a value';
     }

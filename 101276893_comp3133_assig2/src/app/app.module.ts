@@ -1,5 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
+import { ApolloLink, InMemoryCache } from '@apollo/client/core';
+import {HttpLink} from 'apollo-angular/http';
+import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { setContext } from '@apollo/client/link/context';
+
+
+
+// material modules
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -11,21 +27,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
-import { ApolloLink, InMemoryCache } from '@apollo/client/core';
-import {HttpLink} from 'apollo-angular/http';
-import { SearchListingComponent } from './search-listing/search-listing.component';
-import {HttpClientModule} from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { setContext } from '@apollo/client/link/context';
-
-
-
+// exported components
 import { HomeComponent } from './home/home.component';
 import { AddnewListingComponent } from './addnew-listing/addnew-listing.component';
 import { ViewAddedListingComponent } from './view-added-listing/view-added-listing.component';
@@ -70,7 +72,6 @@ export function createApollo(httpLink: HttpLink) {
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    SearchListingComponent,
     HomeComponent,
     AddnewListingComponent,
     ViewAddedListingComponent,
@@ -94,7 +95,7 @@ export function createApollo(httpLink: HttpLink) {
     MatSelectModule,
     MatSnackBarModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     MatInputModule,

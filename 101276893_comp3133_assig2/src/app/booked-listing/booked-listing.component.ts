@@ -4,9 +4,9 @@ import { map, Observable,Subscription } from 'rxjs';
 import { BookingModel } from '../models/booking.model';
 
 
-const GET_BOOKED_LISTINGS = gql`
+const BOOKED_LISTINGS = gql`
 query($username: String!){
-  getBooking(username: $username) {
+  viewUserBookings(username: $username) {
     listing_id
     booking_id
     booking_date
@@ -26,7 +26,7 @@ class ViewBookedListingService {
 
   getBooking(username: String) {
     return this.apollo.watchQuery({
-      query: GET_BOOKED_LISTINGS,
+      query: BOOKED_LISTINGS,
       variables: {
         username,
       }
@@ -50,26 +50,7 @@ export class BookedListingComponent implements OnInit {
   constructor(private apollo: Apollo,private viewBookedListingService: ViewBookedListingService) { }
 
   ngOnInit(): void {
-    // this.listings = this.apollo
-    // .watchQuery({
-    //   query: GET_LISTINGS,
-    // })
-    // .valueChanges.pipe(
-    //   map((result: any) => {
-    //     console.log(result.data.listings);
-    //     return result.data.listings;
-    //   })
-    // );
 
-    // this.querySubscription = this.apollo.watchQuery<any>({
-    //   query: GET_LISTINGS
-    // })
-    //   .valueChanges
-    //   .subscribe(({ data, loading }) => {
-    //     this.loading = loading;
-    //     this.listings = data.getListings;
-    //     console.log(this.listings);
-    //   });
     let token = localStorage.getItem('token')
     this.user = token? JSON.parse(atob(token.split('.')[1])).username : "guest"
     if (this.user === "guest"){
@@ -82,8 +63,8 @@ export class BookedListingComponent implements OnInit {
       .subscribe(({ data }) => {
         this.listings = data;
         console.log('got data', data);
-        console.log(this.listings.getBooking)
-        this.listings = this.listings.getBooking;
+
+        this.listings = this.listings.viewUserBookings;
 
       }, (error) => {
         console.log('there was an error sending the query', error);
