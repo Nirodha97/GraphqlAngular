@@ -28,6 +28,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 // exported components
 import { HomeComponent } from './home/home.component';
 import { AddnewListingComponent } from './addnew-listing/addnew-listing.component';
@@ -97,7 +98,8 @@ export function createApollo(httpLink: HttpLink) {
     MatSelectModule,
     MatSnackBarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonToggleModule
   ],
   exports:[
     MatInputModule,

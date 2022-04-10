@@ -2,20 +2,29 @@
 <div class="container1">
    
         <p > 
-            <mat-toolbar color="primary">
+            <mat-toolbar color="Secondary">
               <span>My App</span>
               <span class="example-spacer"></span>
               <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
                 <mat-icon>login</mat-icon>
               </button> -->
-              <button *ngIf="!isAuthenticated.value" mat-flat-button color="primary" (click)="toSignUp()">Signup</button>
-              <button *ngIf="!isAuthenticated.value" mat-flat-button color="primary" (click)="toLogin()">Login</button>
-              <button *ngIf="isAuthenticated.value" mat-flat-button color="primary" (click)="toLogout()">Logout</button>
+              <mat-button-toggle>
+                <button *ngIf="!isAuthenticated.value" mat-flat-button color="secondary" (click)="toSignUp()">Signup</button>
+                <button *ngIf="!isAuthenticated.value" mat-flat-button color="secondary" (click)="toLogin()">Login</button>
+                <button *ngIf="isAuthenticated.value" mat-flat-button color="secondary" (click)="toLogout()">Logout</button>
+              </mat-button-toggle>
             </mat-toolbar>
           </p>
           
 
     <div class="row">
+  
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-8" >
+      <router-outlet></router-outlet>
+    </div>
     <div class="col-md-3">
       <div class="list-group">
         <div>
@@ -34,10 +43,6 @@
           <div></div>
         </ng-template>
       </div>
-    </div>
-  
-    <div class="col-md-9" >
-      <router-outlet></router-outlet>
     </div>
     </div>
   
