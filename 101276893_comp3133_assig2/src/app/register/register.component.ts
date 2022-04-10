@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 const ADD_USER = gql`
 mutation($username: String!, $firstname: String!, $lastname: String!, $password: String!, $email: String!, $type: String!){
-  addUser(username: $username, firstname: $firstname, lastname: $lastname, password: $password, email: $email, type: $type) {
+  register(username: $username, firstname: $firstname, lastname: $lastname, password: $password, email: $email, type: $type) {
     username
     firstname
     lastname

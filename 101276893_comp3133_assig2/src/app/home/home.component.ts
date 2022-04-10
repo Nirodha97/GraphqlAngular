@@ -6,7 +6,7 @@ import { map, Observable,Subscription } from 'rxjs';
 
 const GET_LISTINGS = gql`
 query{
-  getListings {
+  viewListings {
     listing_id
     listing_title
     description
@@ -116,17 +116,17 @@ export class HomeComponent implements OnInit {
       .valueChanges
       .subscribe(({ data, loading }) => {
         this.loading = loading;
-        this.listings = data.getListings;
+        this.listings = data.viewListings;
         console.log(this.listings);
       });
    
   }
 
 
-getlisting(getListings: any[]) {
-    if (getListings.length > 1)
-        return getListings.reduce((acc, cur) => acc.listing_title + ", " + cur.listing_title);
-    else return getListings[0].listing_title;
+getlisting(viewListings: any[]) {
+    if (viewListings.length > 1)
+        return viewListings.reduce((acc, cur) => acc.listing_title + ", " + cur.listing_title);
+    else return viewListings[0].listing_title;
 }
 
 searchByName(){
