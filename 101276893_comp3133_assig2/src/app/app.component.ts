@@ -13,37 +13,36 @@ export class AppComponent {
   title = '101054615_comp3133_assig2';
   userRole = "guest"
   ngOnInit(){
-    this.userRole = this.detUserRole()
+    this.userRole = this.UserRole()
     console.log(this.userRole)
   }
   
-  hide=false;
-  isAuthenticated = new BehaviorSubject<boolean>(false);
+  isLogged = new BehaviorSubject<boolean>(false);
   constructor(private _router: Router,private authService: AuthService) {
-    if (localStorage.getItem("token")) this.isAuthenticated.next(true);
-    else this.isAuthenticated.next(false);
-    console.log("isAuthenticated "+ this.isAuthenticated.value);
+    if (localStorage.getItem("token")) this.isLogged.next(true);
+    else this.isLogged.next(false);
+    console.log("isLogged "+ this.isLogged.value);
   }
 
   token = localStorage.getItem("token")
   
 
-  toSignUp() {
+  SignUp() {
     console.log("signUp clicked");
     this._router.navigateByUrl('/register')
   }
 
-  toLogin() {
+  Login() {
     console.log("Login Clicked");
     this._router.navigateByUrl('/login')
   }
 
-  toLogout(){
+  Logout(){
     this.authService.signout();
   }
   
 
-  detUserRole(){
+  UserRole(){
     let token = localStorage.getItem("token")
     if (token==null) token = ""
     let userRole = (token)? JSON.parse(atob(token.split('.')[1])).type: "guest"

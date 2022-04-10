@@ -1,16 +1,16 @@
 
-<div class="container1">
+<div class="containers">
    
         <p > 
             <mat-toolbar color="primary">
-              <span>My App</span>
+              <span>Booking</span>
               <span class="example-spacer"></span>
               <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
                 <mat-icon>login</mat-icon>
               </button> -->
-              <button *ngIf="!isAuthenticated.value" mat-flat-button color="primary" (click)="toSignUp()">Signup</button>
-              <button *ngIf="!isAuthenticated.value" mat-flat-button color="primary" (click)="toLogin()">Login</button>
-              <button *ngIf="isAuthenticated.value" mat-flat-button color="primary" (click)="toLogout()">Logout</button>
+              <button *ngIf="!isLogged.value" mat-flat-button color="primary" (click)="SignUp()">Signup</button>
+              <button *ngIf="!isLogged.value" mat-flat-button color="primary" (click)="Login()">Login</button>
+              <button *ngIf="isLogged.value" mat-flat-button color="primary" (click)="Logout()">Logout</button>
             </mat-toolbar>
           </p>
           
@@ -19,7 +19,7 @@
     <div class="col-md-3">
       <div class="list-group">
         <div>
-          <a routerLink="/" class="list-group-item list-group-item-action">Search Listing</a>
+          <a routerLink="/" class="list-group-item list-group-item-action">Home</a>
         </div>
         <div *ngIf="this.userRole === 'customer' || this.userRole === 'guest'; else noneDiv"> 
           <a routerLink="/booked_listing" class="list-group-item list-group-item-action">Booked Listings</a>

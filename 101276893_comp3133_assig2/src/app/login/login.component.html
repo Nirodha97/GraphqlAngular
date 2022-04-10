@@ -5,12 +5,12 @@
 
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="Username" [formControl]="UserNameControl">
-                <mat-error *ngIf="UserNameControl.invalid">{{getErrorMessage_Username()}}</mat-error>
+                <mat-error *ngIf="UserNameControl.invalid">{{getErrorMessage_1()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <input type="password" matInput placeholder="Password"  [formControl]="PasswordControl">
-                <mat-error *ngIf="PasswordControl.invalid">{{getErrorMessage_Password()}}</mat-error>
+                <mat-error *ngIf="PasswordControl.invalid">{{getErrorMessage_2()}}</mat-error>
             </mat-form-field>
 
             <button mat-raised-button color="primary" (click)="login()">Login</button>

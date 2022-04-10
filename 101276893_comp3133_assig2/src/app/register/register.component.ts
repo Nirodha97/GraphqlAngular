@@ -1,8 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { map, Observable,Subscription } from 'rxjs';
-
-//
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormControl,Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -123,21 +121,10 @@ export class RegisterComponent implements OnInit {
 
 
   signup(){
-    let body = new HttpParams({
-      fromObject:{
-          'username': this.UserNameControl.value,
-          'email': this.EmailControl.value,
-          'password': this.PasswordControl.value,
-          'firstname': this.FirstNameControl.value,
-          'lastname': this.LastNameControl.value,
-         
-      }
-    });
-
 
     if(this.UserNameControl.value=="" || this.EmailControl.value=="" ||  this.PasswordControl.value=="" || 
     this.ConformPasswordControl.value=="" || this.FirstNameControl.value=="" || this.LastNameControl.value=="" || this.TypeControl.value==""){
-      alert("Registration Unsuccessfully !!!");
+      alert("Registration Failed !!!");
     }
 
     else if(this.PasswordControl.value==this.ConformPasswordControl.value){

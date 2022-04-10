@@ -1,6 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatInputModule} from '@angular/material/input'
+import {MatCardModule} from '@angular/material/card'
+import {MatListModule} from '@angular/material/list';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -16,26 +26,13 @@ import { setContext } from '@apollo/client/link/context';
 
 
 
-// material modules
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatInputModule} from '@angular/material/input'
-import {MatCardModule} from '@angular/material/card'
-import {MatListModule} from '@angular/material/list';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-// exported components
 import { HomeComponent } from './home/home.component';
 import { AddnewListingComponent } from './addnew-listing/addnew-listing.component';
 import { ViewAddedListingComponent } from './view-added-listing/view-added-listing.component';
 import { BookedListingComponent } from './booked-listing/booked-listing.component'
 
 
-const uri = 'http://localhost:9090/graphql';
+const uri = 'http://localhost:4000/graphql';
 
 
 export function createApollo(httpLink: HttpLink) {
