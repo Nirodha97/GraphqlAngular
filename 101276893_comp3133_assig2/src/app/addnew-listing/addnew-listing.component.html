@@ -6,50 +6,39 @@
 
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="Listing Id" [formControl]="ListingIdControl">
-                <mat-error *ngIf="ListingIdControl.invalid">{{getErrorMessage_ListingId()}}</mat-error>
+                <mat-error *ngIf="ListingIdControl.invalid">{{getErrorMessage_1()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="Listing Title" [formControl]="ListingTitleControl">
-                <mat-error *ngIf="ListingTitleControl.invalid">{{getErrorMessage_ListingTitle()}}</mat-error>
+                <mat-error *ngIf="ListingTitleControl.invalid">{{getErrorMessage_2()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="Description" [formControl]="DescriptionControl">
-                <mat-error *ngIf="DescriptionControl.invalid">{{getErrorMessage_Description()}}</mat-error>
+                <mat-error *ngIf="DescriptionControl.invalid">{{getErrorMessage_3()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="Street" [formControl]="StreetControl">
-                <mat-error *ngIf="StreetControl.invalid">{{getErrorMessage_Street()}}</mat-error>
+                <mat-error *ngIf="StreetControl.invalid">{{getErrorMessage_4()}}</mat-error>
             </mat-form-field>
             
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="City" [formControl]="CityControl">
-                <mat-error *ngIf="CityControl.invalid">{{getErrorMessage_City()}}</mat-error>
+                <mat-error *ngIf="CityControl.invalid">{{getErrorMessage_5()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="Postal Code" [formControl]="PostalCodeControl">
-                <mat-error *ngIf="PostalCodeControl.invalid">{{getErrorMessage_PostalCode()}}</mat-error>
+                <mat-error *ngIf="PostalCodeControl.invalid">{{getErrorMessage_6()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <input type="text" matInput placeholder="Price" [formControl]="PriceControl">
-                <mat-error *ngIf="PriceControl.invalid">{{getErrorMessage_Price()}}</mat-error>
+                <mat-error *ngIf="PriceControl.invalid">{{getErrorMessage_7()}}</mat-error>
             </mat-form-field>
-
-            <!-- <mat-form-field appearance="outline">
-                <input type="text" matInput placeholder="Email" [formControl]="EmailControl">
-                <mat-error *ngIf="EmailControl.invalid">{{getErrorMessage_Email()}}</mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <input type="text" matInput placeholder="User Name" [formControl]="UserNameControl">
-                <mat-error *ngIf="UserNameControl.invalid">{{getErrorMessage_UserName()}}</mat-error>
-            </mat-form-field> -->
-   
-            <button mat-raised-button color="primary" (click)="add()">ADD</button>
+            <button mat-raised-button color="primary" (click)="addListing()">Add Listing</button>
         </form>
     </mat-card>
 </div>

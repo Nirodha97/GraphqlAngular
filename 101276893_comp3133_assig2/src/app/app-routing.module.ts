@@ -10,13 +10,13 @@ import { ViewAddedListingComponent } from './view-added-listing/view-added-listi
 
 
 const routes: Routes = [
- // {path:'',component:HomeComponent},  // Home
-  {path:'register',component:RegisterComponent}, //login
-  {path:'login',component:LoginComponent}, //register
-  {path:'',component:SearchListingComponent} , // search_listing
-  {path:'addnew_listing',component:AddnewListingComponent},  // addnew_listing
-  {path:'viewAdded_listing',component:ViewAddedListingComponent}, //viewAdded_listing
-  {path:'booked_listing',component:BookedListingComponent} // booked_listing
+  {path:'',component:HomeComponent}, 
+  {path:'register',component:RegisterComponent},
+  {path:'login',component:LoginComponent},
+ // {path:'',component:SearchListingComponent} ,
+  {path:'addnew_listing',component:AddnewListingComponent}, 
+  {path:'viewAdded_listing',component:ViewAddedListingComponent},
+  {path:'booked_listing',component:BookedListingComponent} 
  
 ];
 

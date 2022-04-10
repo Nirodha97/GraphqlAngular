@@ -6,12 +6,6 @@ import { Apollo, gql } from 'apollo-angular';
 import { BehaviorSubject } from "rxjs";
 import { AuthService } from '../auth.service';
 
-
-
-
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,7 +20,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  getErrorMessage_Username() {
+  getErrorMessage_1() {
     if (this.UserNameControl.hasError('required')) {
       return 'You must enter a value';
     }
@@ -34,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  getErrorMessage_Password() {
+  getErrorMessage_2() {
     if (this.UserNameControl.hasError('required')) {
       return 'You must enter a value';
     }
@@ -46,30 +40,12 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    let body = new HttpParams({
-      fromObject:{
-          'username': this.UserNameControl.value,
-          'password': this.PasswordControl.value,
-         
-      }
-    });
-
-
     if(this.UserNameControl.value=="" || this.PasswordControl.value==""){
       alert("User Name or Password can not be empty !!!");
     }
 
     else {
-
-      // this.addUserService.addUser(this.UserNameControl.value,this.FirstNameControl.value,this.LastNameControl.value,this.PasswordControl.value,this.EmailControl.value,"admin")
-      // .subscribe(({ data }) => {
-      //   console.log('got data', data);
-      // }, (error) => {
-      //   console.log('there was an error sending the query', error);
-      // });
       this.authService.login(this.UserNameControl.value,this.PasswordControl.value);
-      console.log(this.UserNameControl.value)
-      console.log(this.PasswordControl.value)
     }
 
     

@@ -1,12 +1,18 @@
 import { HttpParams,HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Apollo, gql } from 'apollo-angular';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
-const ADD_LISTING = gql`
+
+
+
+
+
+
+const ADDLISTING = gql`
 mutation($listingId: String, $listingTitle: String, $description: String!, $street: String!, $city: String!, $postalCode: String, $price: String, $email: String!, $username: String!){
   createListing(listing_id: $listingId, listing_title: $listingTitle, description: $description, street: $street, city: $city, postal_code: $postalCode, price: $price, email: $email, username: $username) {
     listing_id
@@ -24,7 +30,7 @@ class AddListingService {
 
   createListing(listing_id: string, listing_title: string, description: string, street: string, city: string, postal_code: string, price: string, email:string, username: string) {
     return this.apollo.mutate({
-      mutation: ADD_LISTING,
+      mutation: ADDLISTING,
       variables: {
         listing_id,
         listing_title,
@@ -39,11 +45,6 @@ class AddListingService {
     });
   }
 }
-
-
-
-
-
 
 @Component({
   selector: 'app-addnew-listing',
@@ -61,123 +62,73 @@ export class AddnewListingComponent implements OnInit {
   CityControl = new FormControl('',[Validators.required]);
   PostalCodeControl = new FormControl('',[Validators.required]);
   PriceControl = new FormControl('',[Validators.required]);
- // UserNameControl = new FormControl('',[Validators.required]);
- // EmailControl = new FormControl('',[Validators.required,Validators.email]);
-
-
-
   loading = true;
-  users: any;
+
 
   
   ngOnInit(): void {
   }
 
 
-  getErrorMessage_ListingId() {
+  getErrorMessage_1() {
     if (this.ListingIdControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_Street(){
+  getErrorMessage_2(){
     if (this.StreetControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_City(){
+  getErrorMessage_3(){
     if (this.CityControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  // getErrorMessage_Email(){
-  //   if (this.EmailControl.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
 
-  //   if(this.EmailControl.hasError('email')){
-  //     return 'Not a valid email';
-  //   }
-  //   return null;
-  // }
-
-  getErrorMessage_ListingTitle(){
+  getErrorMessage_4(){
     if (this.ListingTitleControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_Description(){
+  getErrorMessage_5(){
     if (this.DescriptionControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_PostalCode(){
+  getErrorMessage_6(){
     if (this.PostalCodeControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  getErrorMessage_Price(){
+  getErrorMessage_7(){
     if (this.PriceControl.hasError('required')) {
       return 'You must enter a value';
     }
     return null;
   }
 
-  // getErrorMessage_UserName(){
-  //   if (this.UserNameControl.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
-  //   return null;
-  // }
-
-  add(){
-    let body = new HttpParams({
-      fromObject:{
-          'listingId': this.ListingIdControl.value,
-
-          'password': this.ListingTitleControl.value,
-          'firstname': this.StreetControl.value,
-          'lastname': this.CityControl.value,
-         
-      }
-    });
-
+  addListing(){
 
     if(this.ListingIdControl.value=="" || this.ListingTitleControl.value=="" || 
     this.DescriptionControl.value=="" || this.StreetControl.value=="" || this.CityControl.value==""|| this.PostalCodeControl.value==""
     || this.PriceControl.value==""){
-      alert("Listing added Unsuccessfully !!!");
+      alert("Listing added Fail !!!");
     }
 
     else {
-
-      // this.addUserService.addUser(this.UserNameControl.value,this.FirstNameControl.value,this.LastNameControl.value,this.PasswordControl.value,this.EmailControl.value,"admin")
-      // .subscribe(({ data }) => {
-      //   console.log('got data', data);
-      // }, (error) => {
-      //   console.log('there was an error sending the query', error);
-      // });
-  
-     console.log(this.ListingIdControl.value)
-    // console.log(this.EmailControl.value)
-     console.log(this.ListingTitleControl.value)
-     console.log(this.DescriptionControl.value)
-     console.log(this.StreetControl.value)
-     console.log(this.CityControl.value)
-     console.log(this.PriceControl.value)
-     console.log(this.PostalCodeControl.value)
-     //console.log(this.UserNameControl.value)
 
      let token = localStorage.getItem("token");
      if (token==null) token = ""
@@ -189,7 +140,7 @@ export class AddnewListingComponent implements OnInit {
      .subscribe(({ data }) => {
        console.log('got data', data);
      }, (error) => {
-       console.log('there was an error sending the query', error);
+       console.log('There was an error ', error);
      });
     }
    
